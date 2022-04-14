@@ -18,7 +18,8 @@ meb_QC_plots <- function(seurat_obj) {
   require(gridExtra)
 
   #add QC metadata to Seurat objects
-  seurat_obj[["percent.mt"]] <- PercentageFeatureSet(seurat_obj, pattern = "^MT-")
+
+  seurat_obj[["percent.mt"]] <- PercentageFeatureSet(seurat_obj, assay = "RNA", pattern = "^MT-")
   seurat_obj$log10GenesPerUMI <- log10(seurat_obj$nFeature_RNA) / log10(seurat_obj$nCount_RNA)
 
   #collect metadata
