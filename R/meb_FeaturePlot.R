@@ -19,14 +19,14 @@ meb_FeaturePlot <- function(seurat_obj, features, pt_size = 1.25, reduction = "u
   require(Seurat)
   require(cowplot)
   require(tidyverse)
-  require(RColorBrewer)
+  require(MetBrewer)
   require(dplyr)
 
   #set x and y axis labels
   xlab <- paste(toupper(reduction), "1")
   ylab <- paste(toupper(reduction), "2")
 
-  cols <- pals::parula(n=100)
+  cols <- met.brewer("Troy",n=15,type="continuous")
 
   slot <- ifelse(scale_data == T, "scale.data", "data")
 
@@ -45,6 +45,8 @@ meb_FeaturePlot <- function(seurat_obj, features, pt_size = 1.25, reduction = "u
                           axis.text = element_blank(),
                           axis.title = element_text(size = 20),
                           axis.line = element_line(size = 1)))
-  return_plots <- cowplot::plot_grid(plotlist = plots, ncol = n_col)
+  return_plots <- cowplot::plot_grid(plotlist = plots, ncol = 1)
   return(return_plots)
 }
+
+
