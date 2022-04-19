@@ -20,7 +20,7 @@ meb_DimPlot <- function(seurat_obj, pt_size = 1.25, reduction = "umap", group_by
   require(Seurat)
   require(cowplot)
   require(tidyverse)
-  require(pals)
+  require(MetBrewer)
   require(dplyr)
 
   #set x and y axis labels
@@ -28,13 +28,8 @@ meb_DimPlot <- function(seurat_obj, pt_size = 1.25, reduction = "umap", group_by
   ylab <- paste(toupper(reduction), "2")
 
   #set color map: tol for datasets with 12 groups, alphabet1 for datasets with more than 12 groups (but less than 22)
-  n_groups <- dplyr::select(metadata, c(group_by)) %>% unique() %>% count()
-
-  if(n_groups <= 12) {
-    cols = tol(n=12)
-  } else {
-    cols = alphabet1(n=22)
-  }
+  n_groups <- dplyr::select(seurat_obj@meta.data, c(group_by)) %>% unique() %>% count()
+  cols = met.brewer("Renoir", n=n_groups[,])
 
   #produce plots
   if (label == T){
@@ -66,3 +61,4 @@ meb_DimPlot <- function(seurat_obj, pt_size = 1.25, reduction = "umap", group_by
 
   return(plot)
 }
+

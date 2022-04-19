@@ -4,6 +4,7 @@ Title: R functions for NGS data QC, analysis, and visualization
 Version: 0.1.0
 Author: c(person("Maya Emmons-Bell", "Developer", role = c("aut", "cre"),
                      email = "maya.emmonsbell@gmail.com")
+Description: R functions for NGS data QC, analysis, and visualization
 Maintainer: Maya Emmons-Bell <maya.emmonsbell@gmail.com>
 License: mit
 Encoding: UTF-8
