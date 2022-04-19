@@ -37,7 +37,8 @@ meb_DimPlot <- function(seurat_obj, pt_size = 1.25, reduction = "umap", group_by
                             group.by = group_by,
                             pt.size = pt_size,
                             cols = cols,
-                            label = T) +
+                            label = T,
+                            reduction = reduction) +
       xlab(xlab) +
       ylab(ylab) +
       theme(axis.ticks = element_blank(),
