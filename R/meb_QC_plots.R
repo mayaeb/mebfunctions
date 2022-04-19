@@ -17,6 +17,7 @@ meb_QC_plots <- function(seurat_obj) {
   require(data.table)
   require(gridExtra)
 
+
   #add QC metadata to Seurat objects
 
   seurat_obj[["percent.mt"]] <- PercentageFeatureSet(seurat_obj, assay = "RNA", pattern = "^MT-")
@@ -25,7 +26,7 @@ meb_QC_plots <- function(seurat_obj) {
   #collect metadata
   metadata <- as.data.table(seurat_obj@meta.data)
   vars <- c("orig.ident", "nCount_RNA", "nFeature_RNA", "percent.mt", "log10GenesPerUMI")
-  metadata <- metadata[, ..vars]
+  metadata <- metadata[, vars]
 
   #produce plots
   plot.list <- metadata[,2:5] %>% imap( ~ {

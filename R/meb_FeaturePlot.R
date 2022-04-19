@@ -26,7 +26,7 @@ meb_FeaturePlot <- function(seurat_obj, features, pt_size = 1.25, reduction = "u
   xlab <- paste(toupper(reduction), "1")
   ylab <- paste(toupper(reduction), "2")
 
-  cols <- met.brewer("Troy",n=15,type="continuous")
+  cols <- met.brewer("OKeeffe2",n=15,type="continuous")
 
   slot <- ifelse(scale_data == T, "scale.data", "data")
 
@@ -48,5 +48,4 @@ meb_FeaturePlot <- function(seurat_obj, features, pt_size = 1.25, reduction = "u
   return_plots <- cowplot::plot_grid(plotlist = plots, ncol = 1)
   return(return_plots)
 }
-
 
