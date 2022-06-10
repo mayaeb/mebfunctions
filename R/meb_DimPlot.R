@@ -43,15 +43,16 @@ meb_DimPlot <- function(seurat_obj, pt_size = 1.25, reduction = "umap", group_by
       ylab(ylab) +
       theme(axis.ticks = element_blank(),
             axis.text = element_blank(),
-            axis.line = element_line(size = 1.5),
-            axis.title = element_text(size = 12)) +
+            axis.line = element_line(size = 1),
+            axis.title = element_text(size = 20)) +
       NoLegend()
   } else {
     plot <- Seurat::DimPlot(seurat_obj,
                             group.by = group_by,
                             pt.size = pt_size,
                             cols = cols,
-                            label = F) +
+                            label = F,
+                            reduction = reduction) +
       xlab(xlab) +
       ylab(ylab) +
       theme(axis.ticks = element_blank(),
