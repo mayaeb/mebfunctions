@@ -35,9 +35,10 @@ meb_translateEnsIDs_drerio <- function(ensemblIDs = NULL) {
   colnames(ensemblIDs) <- c("ensembl_gene_id")
   joined <- dplyr::left_join(ensemblIDs, translated, by = "ensembl_gene_id", all.y=TRUE)
   new_names <- joined$external_gene_name
-  new_names[is.na(new_names)] = c("un-mapped")
 
   message('Done!')
   return(new_names)
 }
 
+
+meb_translateEnsIDs_drerio(ensids_to_translate)
