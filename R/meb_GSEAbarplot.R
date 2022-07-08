@@ -20,6 +20,8 @@ meb_GSEAbarplot <- function(result, n_terms, metric = "NES", fill, change_labels
   require(dplyr)
   require(MetBrewer)
 
+
+
   #set color scheme for filled bars
   if (fill == T) {
     cols_pval <- pals::viridis(n_terms)
