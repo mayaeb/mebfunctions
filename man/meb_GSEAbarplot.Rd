@@ -30,5 +30,5 @@ meb_GSEAbarplot(
 a ggplot object
 }
 \description{
-Create consistently formatted bar plots from GSEA analysis output
+Create consistently formatted bar plots from GSEA analysis output. Adapted from a similar function written by Miranda Hunter.
 }

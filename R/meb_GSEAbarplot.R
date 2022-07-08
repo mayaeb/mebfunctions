@@ -16,12 +16,6 @@
 
 meb_GSEAbarplot <- function(result, n_terms, metric = "NES", fill, change_labels = TRUE, pval_fill = TRUE) {
 
-  require(pals)
-  require(dplyr)
-  require(MetBrewer)
-
-
-
   #set color scheme for filled bars
   if (fill == T) {
     cols_pval <- pals::viridis(n_terms)
@@ -43,12 +37,12 @@ meb_GSEAbarplot <- function(result, n_terms, metric = "NES", fill, change_labels
 
   #plot p-value bar
   if (metric == "pval") {
-    data <- result %>% filter(NES>0) %>% arrange(pval) %>% slice(., 1:n_terms)
+    data <- result %>% dplyr::filter(NES>0) %>% dplyr::arrange(pval) %>% dplyr::slice(., 1:n_terms)
     if (pval_fill) {
       data$pathway <- factor(data$pathway, levels = rev(data$pathway))
       plot <- ggplot(data, aes(pval, pathway, fill = pval)) +
         geom_bar(stat = "identity") +
-        scale_fill_gradientn(colours = met.brewer("Tam",n=1000, type = "continuous")) +
+        scale_fill_gradientn(colours = MetBrewer::met.brewer("Tam",n=1000, type = "continuous")) +
         theme_minimal() +
         labs(x = "p-value",
              y = "GO Term") +
@@ -72,12 +66,12 @@ meb_GSEAbarplot <- function(result, n_terms, metric = "NES", fill, change_labels
 
     }
   } else if (metric == "NES") {
-    data <- result %>% arrange(-NES) %>% slice(., 1:n_terms)
+    data <- result %>% dplyr::arrange(-NES) %>% dplyr::slice(., 1:n_terms)
     if (pval_fill) {
       data$pathway <- factor(data$pathway, levels = rev(data$pathway))
       plot <- ggplot(data, aes(NES, pathway, fill = pval)) +
         geom_bar(stat = "identity") +
-        scale_fill_gradientn(colours = met.brewer("Tam",n=1000, type = "continuous")) +
+        scale_fill_gradientn(colours = MetBrewer::met.brewer("Tam",n=1000, type = "continuous")) +
         theme_minimal() +
         labs(x = "Normalized Enrichment Score",
              y = "GO Term") +
