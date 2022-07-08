@@ -40,5 +40,3 @@ meb_translateEnsIDs_drerio <- function(ensemblIDs = NULL) {
   return(new_names)
 }
 
-
-meb_translateEnsIDs_drerio(ensids_to_translate)
